@@ -1,0 +1,371 @@
+// Realistic mock job data
+export const mockJobs = [
+    {
+        id: 'job_001',
+        title: 'Senior Software Engineer',
+        company: 'Google',
+        location: 'Mountain View, CA',
+        jobType: 'full-time',
+        workMode: 'hybrid',
+        postedDate: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000), // 2 days ago
+        applyUrl: 'https://careers.google.com/jobs/results/123456',
+        description: 'We are looking for a Senior Software Engineer to join our Cloud Platform team. You will design and build scalable distributed systems that power Google Cloud. Required skills: Java, Python, distributed systems, Kubernetes, microservices architecture. Experience with cloud infrastructure and large-scale systems is essential.',
+        skills: ['Java', 'Python', 'Kubernetes', 'Microservices', 'Distributed Systems', 'Cloud Computing']
+    },
+    {
+        id: 'job_002',
+        title: 'Full Stack Developer',
+        company: 'Meta',
+        location: 'Menlo Park, CA',
+        jobType: 'full-time',
+        workMode: 'onsite',
+        postedDate: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000),
+        applyUrl: 'https://www.metacareers.com/jobs/123456',
+        description: 'Join our product engineering team to build innovative social features. Work with React, Node.js, GraphQL, and modern web technologies. You will collaborate with designers and product managers to create engaging user experiences. Strong JavaScript skills and experience with React ecosystem required.',
+        skills: ['React', 'Node.js', 'GraphQL', 'JavaScript', 'TypeScript', 'MongoDB']
+    },
+    {
+        id: 'job_003',
+        title: 'Machine Learning Engineer',
+        company: 'OpenAI',
+        location: 'San Francisco, CA',
+        jobType: 'full-time',
+        workMode: 'hybrid',
+        postedDate: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000),
+        applyUrl: 'https://openai.com/careers/machine-learning-engineer',
+        description: 'Build and deploy state-of-the-art machine learning models. Work on large language models, reinforcement learning, and AI safety. Required: Strong Python skills, experience with PyTorch or TensorFlow, deep learning fundamentals, and research experience. PhD preferred but not required.',
+        skills: ['Python', 'PyTorch', 'TensorFlow', 'Deep Learning', 'NLP', 'Machine Learning']
+    },
+    {
+        id: 'job_004',
+        title: 'Frontend Engineer',
+        company: 'Airbnb',
+        location: 'Remote',
+        jobType: 'full-time',
+        workMode: 'remote',
+        postedDate: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000),
+        applyUrl: 'https://careers.airbnb.com/positions/123456',
+        description: 'Create beautiful, performant user interfaces for millions of users worldwide. Work with React, TypeScript, and modern CSS. Focus on accessibility, performance, and user experience. Experience with design systems and component libraries is a plus.',
+        skills: ['React', 'TypeScript', 'CSS', 'HTML', 'JavaScript', 'Webpack']
+    },
+    {
+        id: 'job_005',
+        title: 'DevOps Engineer',
+        company: 'Netflix',
+        location: 'Los Gatos, CA',
+        jobType: 'full-time',
+        workMode: 'hybrid',
+        postedDate: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000),
+        applyUrl: 'https://jobs.netflix.com/jobs/123456',
+        description: 'Build and maintain cloud infrastructure at scale. Work with AWS, Kubernetes, Terraform, and CI/CD pipelines. Automate deployment processes and ensure high availability. Strong Linux skills and experience with containerization required.',
+        skills: ['AWS', 'Kubernetes', 'Terraform', 'Docker', 'CI/CD', 'Linux', 'Python']
+    },
+    {
+        id: 'job_006',
+        title: 'Data Scientist',
+        company: 'Amazon',
+        location: 'Seattle, WA',
+        jobType: 'full-time',
+        workMode: 'onsite',
+        postedDate: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),
+        applyUrl: 'https://www.amazon.jobs/en/jobs/123456',
+        description: 'Apply machine learning and statistical methods to solve complex business problems. Work with large datasets, build predictive models, and drive data-driven decision making. Required: Python, SQL, statistical analysis, and experience with ML frameworks.',
+        skills: ['Python', 'SQL', 'Machine Learning', 'Statistics', 'Pandas', 'Scikit-learn']
+    },
+    {
+        id: 'job_007',
+        title: 'Product Manager',
+        company: 'Stripe',
+        location: 'San Francisco, CA',
+        jobType: 'full-time',
+        workMode: 'hybrid',
+        postedDate: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000),
+        applyUrl: 'https://stripe.com/jobs/listing/product-manager',
+        description: 'Lead product strategy for payment infrastructure. Work with engineering, design, and business teams to build products that developers love. Strong technical background and experience with API products preferred. Excellent communication skills required.',
+        skills: ['Product Management', 'API Design', 'Technical Writing', 'Agile', 'Stakeholder Management']
+    },
+    {
+        id: 'job_008',
+        title: 'Backend Engineer',
+        company: 'Uber',
+        location: 'San Francisco, CA',
+        jobType: 'full-time',
+        workMode: 'hybrid',
+        postedDate: new Date(Date.now() - 6 * 24 * 60 * 60 * 1000),
+        applyUrl: 'https://www.uber.com/careers/list/123456',
+        description: 'Build scalable backend services for ride-sharing platform. Work with Go, microservices, and distributed databases. Design APIs and optimize for performance. Experience with high-traffic systems and real-time data processing required.',
+        skills: ['Go', 'Microservices', 'PostgreSQL', 'Redis', 'Kafka', 'REST APIs']
+    },
+    {
+        id: 'job_009',
+        title: 'iOS Developer',
+        company: 'Apple',
+        location: 'Cupertino, CA',
+        jobType: 'full-time',
+        workMode: 'onsite',
+        postedDate: new Date(Date.now() - 8 * 24 * 60 * 60 * 1000),
+        applyUrl: 'https://jobs.apple.com/en-us/details/123456',
+        description: 'Develop innovative iOS applications using Swift and SwiftUI. Work on cutting-edge features for millions of users. Strong understanding of iOS SDK, UIKit, and app architecture required. Experience with performance optimization and testing.',
+        skills: ['Swift', 'SwiftUI', 'iOS', 'Xcode', 'UIKit', 'Core Data']
+    },
+    {
+        id: 'job_010',
+        title: 'Security Engineer',
+        company: 'Cloudflare',
+        location: 'Austin, TX',
+        jobType: 'full-time',
+        workMode: 'remote',
+        postedDate: new Date(Date.now() - 12 * 24 * 60 * 60 * 1000),
+        applyUrl: 'https://www.cloudflare.com/careers/jobs/123456',
+        description: 'Protect internet infrastructure from security threats. Work on DDoS mitigation, WAF, and security analytics. Strong knowledge of network protocols, cryptography, and security best practices required. Experience with Go or Rust preferred.',
+        skills: ['Security', 'Network Protocols', 'Cryptography', 'Go', 'Rust', 'Linux']
+    },
+    {
+        id: 'job_011',
+        title: 'Software Engineer Intern',
+        company: 'Microsoft',
+        location: 'Redmond, WA',
+        jobType: 'internship',
+        workMode: 'hybrid',
+        postedDate: new Date(Date.now() - 15 * 24 * 60 * 60 * 1000),
+        applyUrl: 'https://careers.microsoft.com/students/us/en/job/123456',
+        description: 'Summer internship opportunity for students passionate about software development. Work on real projects with mentorship from senior engineers. Preferred skills: C#, .NET, Azure, or any modern programming language. Currently pursuing CS degree required.',
+        skills: ['C#', '.NET', 'Azure', 'Git', 'Algorithms', 'Data Structures']
+    },
+    {
+        id: 'job_012',
+        title: 'Data Engineer',
+        company: 'Snowflake',
+        location: 'San Mateo, CA',
+        jobType: 'full-time',
+        workMode: 'hybrid',
+        postedDate: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000),
+        applyUrl: 'https://careers.snowflake.com/us/en/job/123456',
+        description: 'Build and maintain data pipelines and warehouses. Work with SQL, Python, and cloud data platforms. Design ETL processes and optimize query performance. Experience with big data technologies and data modeling required.',
+        skills: ['SQL', 'Python', 'ETL', 'Data Warehousing', 'Spark', 'Airflow']
+    },
+    {
+        id: 'job_013',
+        title: 'UX Designer',
+        company: 'Figma',
+        location: 'San Francisco, CA',
+        jobType: 'full-time',
+        workMode: 'remote',
+        postedDate: new Date(Date.now() - 9 * 24 * 60 * 60 * 1000),
+        applyUrl: 'https://www.figma.com/careers/job/123456',
+        description: 'Design intuitive and beautiful user experiences for design tools. Create wireframes, prototypes, and high-fidelity mockups. Collaborate with product and engineering teams. Strong portfolio and experience with design systems required.',
+        skills: ['Figma', 'UI/UX Design', 'Prototyping', 'User Research', 'Design Systems']
+    },
+    {
+        id: 'job_014',
+        title: 'Site Reliability Engineer',
+        company: 'Datadog',
+        location: 'New York, NY',
+        jobType: 'full-time',
+        workMode: 'hybrid',
+        postedDate: new Date(Date.now() - 11 * 24 * 60 * 60 * 1000),
+        applyUrl: 'https://www.datadoghq.com/careers/detail/123456',
+        description: 'Ensure reliability and performance of monitoring infrastructure. Work with Kubernetes, observability tools, and automation. On-call rotation required. Strong troubleshooting skills and experience with distributed systems essential.',
+        skills: ['Kubernetes', 'Monitoring', 'Python', 'Go', 'Linux', 'Terraform']
+    },
+    {
+        id: 'job_015',
+        title: 'Android Developer',
+        company: 'Spotify',
+        location: 'Stockholm, Sweden',
+        jobType: 'full-time',
+        workMode: 'hybrid',
+        postedDate: new Date(Date.now() - 14 * 24 * 60 * 60 * 1000),
+        applyUrl: 'https://www.lifeatspotify.com/jobs/123456',
+        description: 'Build features for the Spotify Android app used by millions. Work with Kotlin, Jetpack Compose, and modern Android architecture. Focus on performance, offline capabilities, and user experience. Strong Android fundamentals required.',
+        skills: ['Kotlin', 'Android', 'Jetpack Compose', 'MVVM', 'Coroutines', 'Room']
+    },
+    {
+        id: 'job_016',
+        title: 'Solutions Architect',
+        company: 'Salesforce',
+        location: 'San Francisco, CA',
+        jobType: 'full-time',
+        workMode: 'hybrid',
+        postedDate: new Date(Date.now() - 20 * 24 * 60 * 60 * 1000),
+        applyUrl: 'https://salesforce.wd1.myworkdayjobs.com/External/job/123456',
+        description: 'Design enterprise solutions using Salesforce platform. Work with customers to understand requirements and architect scalable solutions. Strong knowledge of Salesforce ecosystem, Apex, and integration patterns required.',
+        skills: ['Salesforce', 'Apex', 'Lightning', 'Integration', 'Solution Design']
+    },
+    {
+        id: 'job_017',
+        title: 'Blockchain Developer',
+        company: 'Coinbase',
+        location: 'Remote',
+        jobType: 'full-time',
+        workMode: 'remote',
+        postedDate: new Date(Date.now() - 6 * 24 * 60 * 60 * 1000),
+        applyUrl: 'https://www.coinbase.com/careers/positions/123456',
+        description: 'Build decentralized applications and smart contracts. Work with Solidity, Ethereum, and Web3 technologies. Strong understanding of blockchain fundamentals and cryptography required. Experience with DeFi protocols a plus.',
+        skills: ['Solidity', 'Ethereum', 'Web3', 'Smart Contracts', 'JavaScript', 'Blockchain']
+    },
+    {
+        id: 'job_018',
+        title: 'QA Engineer',
+        company: 'Atlassian',
+        location: 'Sydney, Australia',
+        jobType: 'full-time',
+        workMode: 'hybrid',
+        postedDate: new Date(Date.now() - 18 * 24 * 60 * 60 * 1000),
+        applyUrl: 'https://www.atlassian.com/company/careers/detail/123456',
+        description: 'Ensure quality of Jira and Confluence products. Design test strategies, write automated tests, and perform manual testing. Experience with Selenium, Cypress, or similar tools required. Strong attention to detail essential.',
+        skills: ['Test Automation', 'Selenium', 'Cypress', 'Java', 'Testing Strategy', 'CI/CD']
+    },
+    {
+        id: 'job_019',
+        title: 'Technical Writer',
+        company: 'GitLab',
+        location: 'Remote',
+        jobType: 'full-time',
+        workMode: 'remote',
+        postedDate: new Date(Date.now() - 22 * 24 * 60 * 60 * 1000),
+        applyUrl: 'https://about.gitlab.com/jobs/apply/123456',
+        description: 'Create comprehensive documentation for developers. Write API docs, tutorials, and guides. Strong technical background and excellent writing skills required. Experience with Git, Markdown, and developer tools essential.',
+        skills: ['Technical Writing', 'Documentation', 'Markdown', 'Git', 'API Documentation']
+    },
+    {
+        id: 'job_020',
+        title: 'Game Developer',
+        company: 'Unity Technologies',
+        location: 'San Francisco, CA',
+        jobType: 'full-time',
+        workMode: 'hybrid',
+        postedDate: new Date(Date.now() - 25 * 24 * 60 * 60 * 1000),
+        applyUrl: 'https://careers.unity.com/position/123456',
+        description: 'Develop features for Unity game engine. Work with C#, graphics programming, and performance optimization. Strong understanding of game development pipelines and 3D mathematics required. Passion for gaming essential.',
+        skills: ['C#', 'Unity', 'Game Development', '3D Graphics', 'Shaders', 'Performance Optimization']
+    },
+    {
+        id: 'job_021',
+        title: 'AI Research Scientist',
+        company: 'DeepMind',
+        location: 'London, UK',
+        jobType: 'full-time',
+        workMode: 'onsite',
+        postedDate: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000),
+        applyUrl: 'https://deepmind.com/careers/jobs/123456',
+        description: 'Conduct cutting-edge AI research in reinforcement learning and neural networks. Publish papers and collaborate with world-class researchers. PhD in Computer Science, Mathematics, or related field required. Strong publication record preferred.',
+        skills: ['Research', 'Deep Learning', 'Reinforcement Learning', 'Python', 'PyTorch', 'Mathematics']
+    },
+    {
+        id: 'job_022',
+        title: 'Cloud Architect',
+        company: 'Oracle',
+        location: 'Austin, TX',
+        jobType: 'full-time',
+        workMode: 'hybrid',
+        postedDate: new Date(Date.now() - 13 * 24 * 60 * 60 * 1000),
+        applyUrl: 'https://www.oracle.com/corporate/careers/123456',
+        description: 'Design and implement cloud solutions on Oracle Cloud Infrastructure. Work with customers on migration strategies and architecture design. Strong knowledge of cloud patterns, networking, and security required.',
+        skills: ['Cloud Architecture', 'OCI', 'Networking', 'Security', 'Terraform', 'Kubernetes']
+    },
+    {
+        id: 'job_023',
+        title: 'Embedded Systems Engineer',
+        company: 'Tesla',
+        location: 'Palo Alto, CA',
+        jobType: 'full-time',
+        workMode: 'onsite',
+        postedDate: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),
+        applyUrl: 'https://www.tesla.com/careers/search/job/123456',
+        description: 'Develop embedded software for vehicle systems. Work with C/C++, real-time operating systems, and hardware interfaces. Strong understanding of embedded systems, automotive protocols, and safety-critical software required.',
+        skills: ['C', 'C++', 'Embedded Systems', 'RTOS', 'CAN Bus', 'Hardware Integration']
+    },
+    {
+        id: 'job_024',
+        title: 'Growth Engineer',
+        company: 'Notion',
+        location: 'San Francisco, CA',
+        jobType: 'full-time',
+        workMode: 'hybrid',
+        postedDate: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000),
+        applyUrl: 'https://www.notion.so/careers/123456',
+        description: 'Drive user growth through experimentation and data analysis. Build features to improve onboarding, retention, and viral loops. Strong full-stack skills and experience with A/B testing required. Data-driven mindset essential.',
+        skills: ['JavaScript', 'React', 'Node.js', 'A/B Testing', 'Analytics', 'SQL']
+    },
+    {
+        id: 'job_025',
+        title: 'Platform Engineer',
+        company: 'Shopify',
+        location: 'Ottawa, Canada',
+        jobType: 'full-time',
+        workMode: 'remote',
+        postedDate: new Date(Date.now() - 16 * 24 * 60 * 60 * 1000),
+        applyUrl: 'https://www.shopify.com/careers/123456',
+        description: 'Build internal platforms and tools for engineering teams. Work with Ruby, Kubernetes, and infrastructure automation. Focus on developer experience and productivity. Strong systems thinking required.',
+        skills: ['Ruby', 'Kubernetes', 'Platform Engineering', 'DevOps', 'Infrastructure', 'Automation']
+    },
+    {
+        id: 'job_026',
+        title: 'Computer Vision Engineer',
+        company: 'Waymo',
+        location: 'Mountain View, CA',
+        jobType: 'full-time',
+        workMode: 'onsite',
+        postedDate: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000),
+        applyUrl: 'https://waymo.com/careers/123456',
+        description: 'Develop computer vision algorithms for autonomous vehicles. Work with deep learning, sensor fusion, and 3D perception. Strong C++ and Python skills required. Experience with CNNs and object detection essential.',
+        skills: ['Computer Vision', 'Deep Learning', 'C++', 'Python', 'TensorFlow', 'Sensor Fusion']
+    },
+    {
+        id: 'job_027',
+        title: 'Engineering Manager',
+        company: 'LinkedIn',
+        location: 'Sunnyvale, CA',
+        jobType: 'full-time',
+        workMode: 'hybrid',
+        postedDate: new Date(Date.now() - 19 * 24 * 60 * 60 * 1000),
+        applyUrl: 'https://www.linkedin.com/jobs/view/123456',
+        description: 'Lead a team of engineers building professional networking features. Manage hiring, performance, and technical direction. Strong technical background and leadership experience required. Experience with large-scale systems preferred.',
+        skills: ['Engineering Management', 'Leadership', 'System Design', 'Java', 'Distributed Systems']
+    },
+    {
+        id: 'job_028',
+        title: 'Cybersecurity Analyst',
+        company: 'Palo Alto Networks',
+        location: 'Santa Clara, CA',
+        jobType: 'full-time',
+        workMode: 'hybrid',
+        postedDate: new Date(Date.now() - 21 * 24 * 60 * 60 * 1000),
+        applyUrl: 'https://jobs.paloaltonetworks.com/job/123456',
+        description: 'Monitor and respond to security threats. Perform vulnerability assessments and incident response. Strong knowledge of security tools, SIEM, and threat intelligence required. Security certifications preferred.',
+        skills: ['Cybersecurity', 'SIEM', 'Incident Response', 'Threat Analysis', 'Security Tools']
+    },
+    {
+        id: 'job_029',
+        title: 'Rust Developer',
+        company: 'Discord',
+        location: 'San Francisco, CA',
+        jobType: 'full-time',
+        workMode: 'remote',
+        postedDate: new Date(Date.now() - 8 * 24 * 60 * 60 * 1000),
+        applyUrl: 'https://discord.com/jobs/123456',
+        description: 'Build high-performance backend services in Rust. Work on real-time communication infrastructure serving millions of users. Strong systems programming skills and experience with concurrent programming required.',
+        skills: ['Rust', 'Systems Programming', 'Concurrency', 'WebSockets', 'Performance Optimization']
+    },
+    {
+        id: 'job_030',
+        title: 'Product Designer',
+        company: 'Canva',
+        location: 'Sydney, Australia',
+        jobType: 'full-time',
+        workMode: 'hybrid',
+        postedDate: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000),
+        applyUrl: 'https://www.canva.com/careers/jobs/123456',
+        description: 'Design delightful user experiences for creative tools. Create user flows, prototypes, and visual designs. Collaborate with product and engineering teams. Strong portfolio demonstrating product thinking required.',
+        skills: ['Product Design', 'Figma', 'Prototyping', 'User Research', 'Visual Design']
+    }
+];
+
+export function getJobs() {
+    return mockJobs;
+}
+
+export function getJobById(id) {
+    return mockJobs.find(job => job.id === id);
+}

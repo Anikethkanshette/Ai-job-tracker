@@ -1,0 +1,36 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Build outputs
+dist/
+build/
+.vite/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Uploads
+uploads/
+*.pdf
+*.txt
+
+# Logs
+logs/
+*.log
