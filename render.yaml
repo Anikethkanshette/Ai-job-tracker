@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: ai-job-tracker-backend
+    runtime: node
+    plan: free
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: PORT
+        value: "3000"
+      - key: NODE_ENV
+        value: production
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+
+  - type: web
+    name: ai-job-tracker-frontend
+    runtime: node
+    plan: free
+    rootDir: frontend
+    buildCommand: npm install && npm run build && npm install -g serve
+    startCommand: serve -s dist -l 5173
+    envVars:
+      - key: VITE_API_URL
+        value: https://ai-job-tracker-backend.onrender.com/api

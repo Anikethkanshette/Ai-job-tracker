@@ -1,5 +1,6 @@
 import { authenticateRequest, getUser, updateUser } from './auth.js';
 import { extractTextFromFile } from '../utils/pdf-extractor.js';
+import { quickAnalyzeResume } from '../services/langchain-matcher.js';
 import path from 'path';
 import fs from 'fs/promises';
 import { fileURLToPath } from 'url';
@@ -69,6 +70,40 @@ export default async function resumeRoutes(fastify, options) {
             fastify.log.error(error);
             return reply.status(500).send({
                 error: error.message || 'Failed to upload resume'
+            });
+        }
+    });
+
+    // Analyze resume and get job role recommendations
+    fastify.get('/analyze', async (request, reply) => {
+        try {
+            const userId = authenticateRequest(request, reply);
+            const user = getUser(userId);
+
+            if (!user.hasResume) {
+                return reply.status(400).send({
+                    error: 'No resume found. Please upload a resume first.'
+                });
+            }
+
+            if (!user.resume.text) {
+                return reply.status(400).send({
+                    error: 'Resume text could not be extracted. Please try uploading again.'
+                });
+            }
+
+            // Use fast analysis (keyword-based, no LLM calls)
+            const analysis = await quickAnalyzeResume(user.resume.text);
+
+            return {
+                success: true,
+                analysis: analysis.analysis,
+                message: 'Resume analyzed successfully'
+            };
+        } catch (error) {
+            fastify.log.error(error);
+            return reply.status(500).send({
+                error: error.message || 'Failed to analyze resume'
             });
         }
     });

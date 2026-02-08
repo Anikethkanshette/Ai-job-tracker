@@ -114,16 +114,8 @@ export default async function jobRoutes(fastify, options) {
 
             const jobs = getJobs();
 
-            // Use fast mode (skip LLM explanations) for initial load
-            const matches = await Promise.all(
-                jobs.map(async (job) => {
-                    const match = await matchResumeToJob(user.resume.text, job, true);
-                    return {
-                        jobId: job.id,
-                        ...match
-                    };
-                })
-            );
+            // Process matches with concurrency limit (3 at a time) to avoid overwhelming APIs
+            const matches = await batchMatchWithLimit(user.resume.text, jobs, 3);
 
             // Sort by score descending
             matches.sort((a, b) => b.score - a.score);
@@ -139,4 +131,50 @@ export default async function jobRoutes(fastify, options) {
             });
         }
     });
+
+    /**
+     * Process multiple jobs with concurrency limit to avoid API rate limiting
+     */
+    async function batchMatchWithLimit(resumeText, jobs, concurrency = 3) {
+        const matches = [];
+        
+        for (let i = 0; i < jobs.length; i += concurrency) {
+            const batch = jobs.slice(i, i + concurrency);
+            
+            // Process this batch in parallel
+            const batchResults = await Promise.all(
+                batch.map(async (job) => {
+                    try {
+                        const match = await matchResumeToJob(resumeText, job, true);
+                        return {
+                            jobId: job.id,
+                            ...match
+                        };
+                    } catch (error) {
+                        // Fallback to simple matching if AI fails
+                        console.warn(`Failed to match job ${job.id}, using fallback`);
+                        return {
+                            jobId: job.id,
+                            score: 50,
+                            explanation: {
+                                matchingSkills: [],
+                                relevantExperience: 'Unable to analyze',
+                                keywordAlignment: 'Fallback matching',
+                                reasoning: 'AI matching temporarily unavailable'
+                            }
+                        };
+                    }
+                })
+            );
+            
+            matches.push(...batchResults);
+            
+            // Add small delay between batches to avoid rate limiting
+            if (i + concurrency < jobs.length) {
+                await new Promise(resolve => setTimeout(resolve, 100));
+            }
+        }
+        
+        return matches;
+    }
 }

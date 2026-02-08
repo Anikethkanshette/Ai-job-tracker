@@ -1,7 +1,11 @@
 import axios from 'axios';
 
+// Use environment variable for API URL if available (Render deployment)
+// Otherwise default to /api (local development)
+const baseURL = import.meta.env.VITE_API_URL || '/api';
+
 const api = axios.create({
-    baseURL: '/api',
+    baseURL,
     headers: {
         'Content-Type': 'application/json'
     }
