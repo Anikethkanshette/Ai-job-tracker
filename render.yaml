@@ -1,10 +1,10 @@
 services:
   - type: web
-    name: ai-job-tracker-backend
+    name: ai-job-tracker
     runtime: node
     plan: free
     rootDir: backend
-    buildCommand: npm install
+    buildCommand: npm run build
     startCommand: npm start
     healthCheckPath: /health
     autoDeploy: true
@@ -17,14 +17,3 @@ services:
         sync: false
       - key: DATABASE_URL
         sync: false
-
-  - type: web
-    name: ai-job-tracker-frontend
-    runtime: node
-    plan: free
-    rootDir: frontend
-    buildCommand: npm install && npm run build && npm install -g serve
-    startCommand: serve -s dist -l 5173
-    envVars:
-      - key: VITE_API_URL
-        value: https://ai-job-tracker-backend.onrender.com/api

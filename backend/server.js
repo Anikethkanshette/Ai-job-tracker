@@ -41,28 +41,11 @@ await fastify.register(multipart, {
 // Static files for uploads
 await fastify.register(fastifyStatic, {
     root: path.join(__dirname, 'uploads'),
-    prefix: '/uploads/'
+    prefix: '/uploads/',
+    decorateReply: false
 });
 
-// Root route - API information
-fastify.get('/', async (request, reply) => {
-    return {
-        name: 'AI Job Tracker API',
-        version: '1.0.0',
-        status: 'running',
-        endpoints: {
-            health: '/health',
-            auth: '/api/auth',
-            resume: '/api/resume',
-            jobs: '/api/jobs',
-            applications: '/api/applications',
-            assistant: '/api/assistant'
-        },
-        documentation: 'Visit the frontend application for full functionality'
-    };
-});
-
-// Health check
+// Health check (before frontend routes)
 fastify.get('/health', async (request, reply) => {
     return { status: 'ok', timestamp: new Date().toISOString() };
 });
@@ -73,6 +56,40 @@ await fastify.register(resumeRoutes, { prefix: '/api/resume' });
 await fastify.register(jobRoutes, { prefix: '/api/jobs' });
 await fastify.register(applicationRoutes, { prefix: '/api/applications' });
 await fastify.register(assistantRoutes, { prefix: '/api/assistant' });
+
+// Serve frontend static files (after API routes)
+const frontendDistPath = path.join(__dirname, '..', 'frontend', 'dist');
+try {
+    // Check if dist folder exists
+    await import('fs/promises').then(fs => fs.access(frontendDistPath));
+
+    // Serve static files from frontend/dist
+    await fastify.register(fastifyStatic, {
+        root: frontendDistPath,
+        prefix: '/',
+        decorateReply: false
+    });
+
+    // SPA fallback - serve index.html for all non-API routes
+    fastify.setNotFoundHandler(async (request, reply) => {
+        // If it's an API route, return 404 JSON
+        if (request.url.startsWith('/api/')) {
+            return reply.status(404).send({
+                message: `Route ${request.method}:${request.url} not found`,
+                error: 'Not Found',
+                statusCode: 404
+            });
+        }
+
+        // Otherwise, serve index.html (SPA fallback)
+        return reply.sendFile('index.html');
+    });
+
+    console.log('✅ Frontend static files will be served from:', frontendDistPath);
+} catch (err) {
+    console.warn('⚠️  Frontend dist folder not found. Run "npm run build" in frontend directory.');
+    console.warn('   Server will only serve API routes.');
+}
 
 // Error handler
 fastify.setErrorHandler((error, request, reply) => {
