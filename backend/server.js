@@ -20,11 +20,16 @@ const fastify = Fastify({
     logger: true
 });
 
-// CORS configuration
-await fastify.register(cors, {
-    origin: ['http://localhost:5173', 'http://127.0.0.1:5173'],
-    credentials: true
-});
+// CORS configuration (make origins configurable via CORS_ORIGINS env var)
+const corsOriginsRaw = process.env.CORS_ORIGINS || 'http://localhost:5173,http://127.0.0.1:5173';
+let corsOptions;
+if (corsOriginsRaw.trim() === '*') {
+    corsOptions = { origin: true, credentials: true };
+} else {
+    const origins = corsOriginsRaw.split(',').map(s => s.trim()).filter(Boolean);
+    corsOptions = { origin: origins, credentials: true };
+}
+await fastify.register(cors, corsOptions);
 
 // Multipart for file uploads
 await fastify.register(multipart, {
@@ -37,6 +42,24 @@ await fastify.register(multipart, {
 await fastify.register(fastifyStatic, {
     root: path.join(__dirname, 'uploads'),
     prefix: '/uploads/'
+});
+
+// Root route - API information
+fastify.get('/', async (request, reply) => {
+    return {
+        name: 'AI Job Tracker API',
+        version: '1.0.0',
+        status: 'running',
+        endpoints: {
+            health: '/health',
+            auth: '/api/auth',
+            resume: '/api/resume',
+            jobs: '/api/jobs',
+            applications: '/api/applications',
+            assistant: '/api/assistant'
+        },
+        documentation: 'Visit the frontend application for full functionality'
+    };
 });
 
 // Health check
